@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+          <div class="portfolio_image_area">
+              <div class="container">
+                <p>
+                  {% if request.session.language == 'RU' %}
+                    На этой странице вы можете получить дополнительную информацию о вашем осветитель, введя код продукта, указанный на гарантийной карточке.
+                  {% else %}
+                    На цій сторінці ви можете отримати додаткову інформацію про ваш освітлювач, увівши код продукту, який вказаний на гарантійній картці.
+                  {% endif %}
+                 </p>
+                <form   class="form-inline" action="{% url 'info' %}" method="GET">
+                  <input class="form-control mr-sm-2" type="text" name='code'
+                          {% if request.session.language == 'RU' %}
+                            placeholder="Введите код продукта"
+                          {% else %}
+                            placeholder="Введіть код продукта"
+                          {% endif %} >
+                  <button class="btn btn-dark"  type="submit">
+                          {% if request.session.language == 'RU' %}
+                            Поиск
+                          {% else %}
+                            Пошук
+                          {% endif %}
+
+                  </button>
+                </form>
+                </div>
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8">
+                          <div class="section_title text-center mb-90" >
+                            {% if prod_info == 'Enter' %}
+                              <img src="{% static 'example.jpg' %}"height="300" width="600" alt="">
+                            {% elif prod_info %}
+                              <br><br><br><br><br>
+                              <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Код товара: {{prod_info.code}}</h3>
+                              <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" style="font-size: 20px;color: #0a0909;">
+                                {% if request.session.language == 'RU' %}
+                                  Дата покупки:
+                                {% else %}
+                                  Дата купівлі:
+                                {% endif %}
+
+                                {{prod_info.date}}</p>
+                              <br>
+                              <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                                {% if request.session.language == 'RU' %}
+                                  Особенности:
+                                {% else %}
+                                  Особливості:
+                                {% endif %}
+                                {{prod_info.description}}</h3>
+                            {% else %}
+                              <br><br><br><br><br>
+                              <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                                {% if request.session.language == 'RU' %}
+                                  Неправильный код
+                                {% else %}
+                                  Неправильний код
+                                {% endif %}
+
+                              </h3>
+                            {% endif %}
+                          </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block contact %}
+
+              <div class="col-lg-4">
+                <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="ti-home"></i></span>
+                  <div class="media-body">
+                    <h3>Ukraine, Kyiv</h3>
+                    <p>03083</p>
+                  </div>
+                </div>
+                <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                  <div class="media-body">
+                    <h3>+38(073)103-08-24</h3>
+                    {% if request.session.language == 'RU' %}
+                      <p>Пн-Пт с 10 до 18</p>
+                    {% elif request.session.language == 'EN' %}
+                      <p>Mon-Fri from 10 till 18</p>
+                    {% else %}
+                      <p>Пн-Пт з 10 до 18</p>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="ti-email"></i></span>
+                  <div class="media-body">
+                    <h3>zorglight@gmail.com</h3>
+                        {% if request.session.language == 'RU' %}
+                          <p>пишите нам в любое время</p>
+                        {% elif request.session.language == 'EN' %}
+                          <p>write to us at any time</p>
+                        {% else %}
+                          <p>пишіть нам в будь-який час</p>
+                        {% endif %}
+                  </div>
+                </div>
+              </div>
+
+{% endblock %}

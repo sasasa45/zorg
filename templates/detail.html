@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block body %}
+          <div class="portfolio_image_area">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8">
+                          <div class="section_title text-center mb-90" >
+                              <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">{{ item.name}}</h3>
+                              <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" style="font-size: 20px;color: #0a0909;">
+                                {% if request.session.language == 'RU' %}
+                                  {{item.description_ru}}
+                                {% elif request.session.language == 'EN' %}
+                                  {{item.description_en}}
+                                {% else %}
+                                  {{item.description_ua}}
+                                {% endif %}
+                              </p>
+                              <br>
+                              <h3 class="wow fadeInUp" style="color:#615bfd;" data-wow-duration="1s" data-wow-delay=".3s">{{item.price}} UAH</h3>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="container">
+                    <div class="row justify-content-center">
+                        <a href="https://zorglight.prom.ua/"><button class="boxed-btn3" >
+                          {% if request.session.language == 'RU' %}
+                            Актуальная цена
+                          {% elif request.session.language == 'EN' %}
+                            Price
+                          {% else %}
+                            Актуальна ціна
+                          {% endif %}
+
+
+                        </button></a>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="row justify-content-center">
+
+                    {% for photo in item.photos_set.all %}
+                      <div class="col-lg-5 col-md-6 col-lg-4">
+                          <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                              <div class="portfolio_thumb">
+                                  <img src="{{photo.image.url}}" alt="">
+                              </div>
+                              <div class="portfolio_hover">
+                                  <div class="title">
+                                      <h3>
+                                        {% if request.session.language == 'RU' %}
+                                          {{photo.description_ru}}
+                                        {% elif request.session.language == 'EN' %}
+                                          {{photo.description_en}}
+                                        {% else %}
+                                          {{photo.description_ua}}
+                                        {% endif %}
+                                      </h3>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    {% endfor %}
+
+                  </div>
+              </div>
+          </div>
+          {% if item.video_url%}
+        <div class="container">
+          <div class="row justify-content-center">
+            <iframe align="auto" width="640" height="360" src="{{item.video_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        {% endif %}
+        {% if item.pdf_1 and request.session.language == 'UA' %}
+        <br>
+        <div class="container">
+          <div class="row justify-content-center">
+              <a href="{{item.pdf_1.url}}"><button class="boxed-btn3" >Інструкція {{item.name}}</button></a>
+          </div>
+        </div>
+        {% endif %}
+        {% if item.pdf_2 and request.session.language == 'RU' %}
+        <br>
+        <div class="container">
+          <div class="row justify-content-center">
+              <a href="{{item.pdf_2.url}}"><button class="boxed-btn3" >Инструкция {{item.name}}</button></a>
+          </div>
+        </div>
+        {% endif %}
+        {% if item.pdf_3 and request.session.language == 'EN' %}
+        <br>
+        <div class="container">
+          <div class="row justify-content-center">
+              <a href="{{item.pdf_3.url}}"><button class="boxed-btn3" >instruction {{item.name}}</button></a>
+          </div>
+        </div>
+        {% endif %}
+
+{% endblock %}
