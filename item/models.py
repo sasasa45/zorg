@@ -30,6 +30,9 @@ class Photos(models.Model):
     description_en = models.TextField(null=True, blank=True)
     image=models.ImageField(upload_to='items')
 
+    def __str__(self):
+        return self.item.name + self.description_en
+
 
 class ProductCode(models.Model):
     owner=models.CharField(max_length=8, null=True,blank=True)
