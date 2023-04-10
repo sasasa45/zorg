@@ -2871,6 +2871,7 @@ h3 {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  border: 5px solid #000000;
 }
 
 /* line 42, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio.scss */
