@@ -744,13 +744,13 @@ h3 {
 
 /* line 69, ../../Arafath/CL/December/233. Startup/HTML/scss/_section_title.scss */
 .mb-90 {
-  margin-bottom: 90px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 767px) {
   /* line 69, ../../Arafath/CL/December/233. Startup/HTML/scss/_section_title.scss */
   .mb-90 {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 }
 
@@ -858,7 +858,7 @@ h3 {
   padding: 5px;
   right: 0;
   margin-top: -5px;
-  top: -29px;
+  top: -40px;
   right: 5px;
 }
 
@@ -2797,8 +2797,8 @@ h3 {
 
 /* line 2, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio.scss */
 .portfolio_image_area {
-  padding-top: 147px;
-  padding-bottom: 130px;
+  padding-top: 100px;
+  padding-bottom: 50px;
   position: relative;
 }
 
@@ -2806,7 +2806,7 @@ h3 {
   /* line 2, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio.scss */
   .portfolio_image_area {
     padding-top: 70px;
-    padding-bottom: 40px;
+    padding-bottom: 0px;
   }
 }
 
@@ -3416,15 +3416,15 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_getIn_tauch.scss */
 .get_in_tauch_area {
-  padding-top: 146px;
-  padding-bottom: 160px;
+  padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 @media (max-width: 767px) {
   /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_getIn_tauch.scss */
   .get_in_tauch_area {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 25px;
+    padding-bottom: 50px;
   }
 }
 

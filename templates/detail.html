@@ -6,8 +6,8 @@
                   <div class="row justify-content-center">
                       <div class="col-lg-8">
                           <div class="section_title text-center mb-90" >
-                              <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">{{ item.name}}</h3>
-                              <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" style="font-size: 20px;color: #0a0909;">
+                              <h3 class="wow fadeInUp" data-wow-duration="0s" data-wow-delay="0s">{{ item.name}}</h3>
+                              <p class="wow fadeInUp" data-wow-duration="0s" data-wow-delay="0s" style="font-size: 20px;color: #0a0909;">
                                 {% if request.session.language == 'RU' %}
                                   {{item.description_ru}}
                                 {% elif request.session.language == 'EN' %}
@@ -17,7 +17,7 @@
                                 {% endif %}
                               </p>
                               <br>
-                              <h3 class="wow fadeInUp" style="color:#615bfd;" data-wow-duration="1s" data-wow-delay=".3s">{{item.price}} UAH</h3>
+                              <h3 class="wow fadeInUp" style="color:#615bfd;" data-wow-duration="0s" data-wow-delay="0s">{{item.price}} UAH</h3>
                           </div>
                       </div>
                   </div>
@@ -42,7 +42,7 @@
 
                     {% for photo in item.photos_set.all %}
                       <div class="col-lg-5 col-md-6 col-lg-4">
-                          <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                          <div class="single_Portfolio wow fadeInUp" data-wow-duration="0s" data-wow-delay="0s">
                               <div class="portfolio_thumb">
                                   <img src="{{photo.image.url}}" alt="">
                               </div>
