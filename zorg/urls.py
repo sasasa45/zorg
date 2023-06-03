@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from item.views import ZorgList, ZorgDetail,email,contact, info_code, language
+from django.urls import path, include
+from item.views import ZorgList, ZorgDetail, email, contact, info_code, language
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('<slug:slug>/', ZorgDetail.as_view(), name='detail'),
     path('email', email, name='email'),
     path('language/<slug:slug>/', language, name='language'),
+    path('tinymce/', include('tinymce.urls'))
 
 ]
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

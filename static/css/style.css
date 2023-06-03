@@ -2850,7 +2850,8 @@ h3 {
 
 /* line 29, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio.scss */
 .portfolio_image_area .single_Portfolio .portfolio_thumb {
-  height: 350px;
+  height: 420px;
+  width: 420px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -2866,8 +2867,8 @@ h3 {
 
 /* line 36, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio.scss */
 .portfolio_image_area .single_Portfolio .portfolio_thumb img {
-  width: 100%;
-  height: 100%;
+  width: 420px;
+  height: 420px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;

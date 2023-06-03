@@ -1,18 +1,18 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.html import mark_safe
+from tinymce import models as tinymce_models
 
 
-# Create your models here.
 class Items(models.Model):
     name = models.CharField(max_length=256, verbose_name='Назва продукту')
     price = models.FloatField(verbose_name='Ціна')
     sale = models.FloatField(null=True, blank=True, verbose_name='Розпродаж')
     slug = models.SlugField(null=True, blank=True)
     video_url = models.URLField(null=True, blank=True)
-    description_ru = models.TextField(null=True, blank=True)
-    description_ua = models.TextField(null=True, blank=True, verbose_name='Опис українською')
-    description_en = models.TextField(null=True, blank=True, verbose_name='Опис англійською')
+    description_ru = tinymce_models.HTMLField(null=True, blank=True)
+    description_ua = tinymce_models.HTMLField(null=True, blank=True, verbose_name='Опис українською')
+    description_en = tinymce_models.HTMLField(null=True, blank=True, verbose_name='Опис англійською')
     pdf_1 = models.FileField(null=True, blank=True, verbose_name='Інструкція українською')
     pdf_2 = models.FileField(null=True, blank=True, verbose_name='Інструкція російською')
     pdf_3 = models.FileField(null=True, blank=True, verbose_name='Інструкція англійською')
@@ -37,7 +37,7 @@ class Photos(models.Model):
     image = models.ImageField(upload_to='items', verbose_name='Зображення')
 
     def __str__(self):
-        return self.item.name + self.description_en
+        return f'{self.item.name} {self.description_en }'
 
 
 class ProductCode(models.Model):
@@ -48,7 +48,7 @@ class ProductCode(models.Model):
     description_ua = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.owner+' ' + self.code
+        return f'{self.owner} {self.code}'
 
 
 class Spy(models.Model):
