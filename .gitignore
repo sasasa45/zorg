@@ -4,3 +4,6 @@ media/*
 db.sqlite3
 venv
 .idea
+static/admin
+static/django_tinymce
+static/tinymce
