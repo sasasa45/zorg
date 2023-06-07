@@ -10,9 +10,9 @@
                           </div>
                           <div class="container wow fadeInUp" style="font-size: 17px;color: #0a0909;">
                                 {% if request.session.language == 'RU' %}
-                                  {{item.description_ru}}
+                                  {{item.description_ru|safe}}
                                 {% elif request.session.language == 'EN' %}
-                                  {{item.description_en}}
+                                  {{item.description_en|safe}}
                                 {% else %}
                                   {{item.description_ua|safe}}
                                 {% endif %}
