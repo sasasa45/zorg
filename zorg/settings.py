@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'zorg.custom_middleware.ListItemsMiddleware'
 ]
 
 ROOT_URLCONF = 'zorg.urls'

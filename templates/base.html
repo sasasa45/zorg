@@ -34,276 +34,279 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
 
-        <!-- header-start -->
-        <header>
-            <div class="header-area ">
-                <div id="sticky-header" class="main-header-area">
-                    <div class="container-fluid p-0">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo-img">
-                                    <a href="{% url 'main'%}">
-                                        <img src="{% static 'logo.ico' %}" alt="" width="55px" height="55px">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9">
-                                <div class="main-menu  d-none d-lg-block text-center">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="{% url 'detail' slug='zorg_m1'%}">3-org M1</a></li>
-                                            <li><a href="{% url 'detail' slug='zorg_m2'%}">3-org M2</a></li>
-                                            <li><a href="{% url 'contacts'%}">
-                                              {% if request.session.language == 'RU' %}
-                                                Контакты
-                                              {% elif request.session.language == 'EN' %}
-                                                Contact us
-                                              {% else %}
-                                                Контакти
-                                              {% endif %}
-
-                                            </a></li>
-{#                                            <li><a href="{% url 'info'%}">#}
-{#                                              {% if request.session.language == 'RU' %}#}
-{#                                                ваш осветитель#}
-{#                                              {% else %}#}
-{#                                                ваш освітлювач#}
-{#                                              {% endif %}#}
-{#                                            </a></li>#}
-                                            <li><a href="#">
-                                              {% if request.session.language == 'RU' %}
-                                                Язык
-                                              {% elif request.session.language == 'EN' %}
-                                                Language
-                                              {% else %}
-                                                Мова
-                                              {% endif %}
-                                              <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% url 'language' slug='UA' %}">UA</a></li>
-                                                    <li><a href="{% url 'language' slug='EN' %}">EN</a></li>
-{#                                                    <li><a href="{% url 'language' slug='RU' %}">RU</a></li>#}
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 d-none d-lg-block">
-                                <div class="log_chat_area d-flex align-items-end">
-                                  {% if request.session.language %}
-                                    <h1 class="say_hi">{{request.session.language}}</h1>
-                                  {% else %}
-                                    <h1 class="say_hi">UA</h1>
-                                  {% endif %}
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
+<!-- header-start -->
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid p-0">
+                <div class="row align-items-center no-gutters">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo-img">
+                            <a href="{% url 'main' %}">
+                                <img src="{% static 'logo.ico' %}" alt="" width="55px" height="55px">
+                            </a>
                         </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9">
+                        <div class="main-menu  d-none d-lg-block text-center">
+                            <nav>
+                                <ul id="navigation">
+                                    {% for item in request.items %}
+                                        <li><a href="{% url 'detail' slug=item.slug %}">{{ item.name }}</a></li>
+                                    {% endfor %}
+
+                                    <li><a href="{% url 'contacts' %}">
+                                        {% if request.session.language == 'RU' %}
+                                            Контакты
+                                        {% elif request.session.language == 'EN' %}
+                                            Contact us
+                                        {% else %}
+                                            Контакти
+                                        {% endif %}
+
+                                    </a></li>
+                                    {#                                            <li><a href="{% url 'info'%}">#}
+                                    {#                                              {% if request.session.language == 'RU' %}#}
+                                    {#                                                ваш осветитель#}
+                                    {#                                              {% else %}#}
+                                    {#                                                ваш освітлювач#}
+                                    {#                                              {% endif %}#}
+                                    {#                                            </a></li>#}
+                                    <li><a href="#">
+                                        {% if request.session.language == 'RU' %}
+                                            Язык
+                                        {% elif request.session.language == 'EN' %}
+                                            Language
+                                        {% else %}
+                                            Мова
+                                        {% endif %}
+                                        <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="{% url 'language' slug='UA' %}">UA</a></li>
+                                            <li><a href="{% url 'language' slug='EN' %}">EN</a></li>
+                                            {#                                                    <li><a href="{% url 'language' slug='RU' %}">RU</a></li>#}
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 d-none d-lg-block">
+                        <div class="log_chat_area d-flex align-items-end">
+                            {% if request.session.language %}
+                                <h1 class="say_hi">{{ request.session.language }}</h1>
+                            {% else %}
+                                <h1 class="say_hi">UA</h1>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- header-end -->
-    <!-- /bradcam_area  -->
-    <div class="bradcam_area " style="background-image: url({% static 'header_img.png' %})">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-12">
-                      <div class="bradcam_text">
-                          <h3></h3>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- messages -->
-          {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+<!-- /bradcam_area  -->
+<div class="bradcam_area " style="background-image: url({% static 'header_img.png' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- messages -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
                 <h3>{{ message }}</h3>
             </li>
-            {% endfor %}
-            </ul>
-          {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
 
 
-    <!-- portfolio_image_area  -->
-     {% block body %} {% endblock %}
-    <!--/ portfolio_image_area  -->
+<!-- portfolio_image_area  -->
+{% block body %} {% endblock %}
+<!--/ portfolio_image_area  -->
 
 
-    <!-- testimonial_area  -->
+<!-- testimonial_area  -->
 
-    <!-- /testimonial_area  -->
+<!-- /testimonial_area  -->
 
-    <div class="get_in_tauch_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb-90">
-                        <h3>
-                          {% if request.session.language == 'RU' %}
+<div class="get_in_tauch_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-90">
+                    <h3>
+                        {% if request.session.language == 'RU' %}
                             Связаться с нами
-                          {% elif request.session.language == 'EN' %}
+                        {% elif request.session.language == 'EN' %}
                             Contact us
-                          {% else %}
+                        {% else %}
                             Зв'язатися з нами
-                          {% endif %}
-                        </h3>
-                    </div>
+                        {% endif %}
+                    </h3>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="touch_form">
-                        <form action="{% url 'email' %}" method="GET">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="touch_form">
+                    <form action="{% url 'email' %}" method="GET">
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single_input" >
-                                        <input type="text" name="name"
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single_input">
+                                    <input type="text" name="name"
                                             {% if request.session.language == 'RU' %}
-                                              placeholder="Ваше имя"
+                                           placeholder="Ваше имя"
                                             {% elif request.session.language == 'EN' %}
-                                              placeholder="Your name"
+                                           placeholder="Your name"
                                             {% else %}
-                                              placeholder="Ваше ім'я"
+                                           placeholder="Ваше ім'я"
                                             {% endif %}
 
-                                        required >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single_input" >
-                                        <input type="email" name="email" placeholder="Email" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="single_input" >
-                                       <textarea name="text" id="" cols="30"
-                                       {% if request.session.language == 'RU' %}
-                                         placeholder="Сообщение"
-                                       {% elif request.session.language == 'EN' %}
-                                         placeholder="Message"
-                                       {% else %}
-                                         placeholder="Повідомлення"
-                                       {% endif %}
-
-                                       rows="10" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="submit_btn" >
-                                        <button class="boxed-btn3" type="submit">
-                                          {% if request.session.language == 'RU' %}
-                                            Отправить
-                                          {% elif request.session.language == 'EN' %}
-                                            Send
-                                          {% else %}
-                                            Відправити
-                                          {% endif %}
-                                        </button>
-                                    </div>
+                                           required>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-md-6">
+                                <div class="single_input">
+                                    <input type="email" name="email" placeholder="Email" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="single_input">
+                                       <textarea name="text" id="" cols="30"
+                                               {% if request.session.language == 'RU' %}
+                                                 placeholder="Сообщение"
+                                               {% elif request.session.language == 'EN' %}
+                                                 placeholder="Message"
+                                               {% else %}
+                                                 placeholder="Повідомлення"
+                                               {% endif %}
+
+                                                 rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="submit_btn">
+                                    <button class="boxed-btn3" type="submit">
+                                        {% if request.session.language == 'RU' %}
+                                            Отправить
+                                        {% elif request.session.language == 'EN' %}
+                                            Send
+                                        {% else %}
+                                            Відправити
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% block contact %} {% endblock %}
+        </div>
+    </div>
+</div>
+
+<!-- footer start -->
+<footer class="footer">
+    <div class="footer_top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-7 col-md-9">
+                    <div class="menu_links">
+                        <ul>
+                            <li><a href="{% url 'contacts' %}">
+                                {% if request.session.language == 'RU' %}
+                                    Контакты
+                                {% elif request.session.language == 'EN' %}
+                                    Contact us
+                                {% else %}
+                                    Контакти
+                                {% endif %}
+                            </a></li>
+                            <li><a href="{% url 'detail' slug='zorg_m1' %}">3-org M1</a></li>
+                            <li><a href="{% url 'detail' slug='zorg_m2' %}">3-org M2</a></li>
+                        </ul>
                     </div>
                 </div>
-                {% block contact %} {% endblock %}
+                <div class="col-lg-3 col-md-12">
+                    <div class="socail_links">
+                        <ul>
+                            <li><a href="https://www.facebook.com/zoooorg"> <i class="fa fa-facebook"></i> </a></li>
+                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                            <li><a href="#"> <i class="fa fa-telegram" aria-hidden="true"></i> </a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- footer start -->
-    <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-7 col-lg-7 col-md-9">
-                        <div class="menu_links">
-                            <ul>
-                                <li><a href="{% url 'contacts' %}">
-                                  {% if request.session.language == 'RU' %}
-                                    Контакты
-                                  {% elif request.session.language == 'EN' %}
-                                    Contact us
-                                  {% else %}
-                                    Контакти
-                                  {% endif %}
-                                </a></li>
-                                <li><a href="{% url 'detail' slug='zorg_m1'%}">3-org M1</a></li>
-                                <li><a href="{% url 'detail' slug='zorg_m2'%}">3-org M2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12">
-                        <div class="socail_links">
-                            <ul>
-                                <li><a href="https://www.facebook.com/zoooorg"> <i class="fa fa-facebook"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-telegram" aria-hidden="true"></i> </a></li>
-                            </ul>
-                        </div>
-                    </div>
+    <div class="copy-right_text">
+        <div class="container">
+            <div class="footer_border"></div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <p class="copy_right text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        © 3-org, 2017-2023
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  © 3-org, 2017-2023
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--/ footer end  -->
+    </div>
+</footer>
+<!--/ footer end  -->
 
-    <!-- JS here -->
-    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-    <script src="{% static 'js/ajax-form.js' %}"></script>
-    <script src="{% static 'js/waypoints.min.js' %}"></script>
-    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
-    <script src="{% static 'js/scrollIt.js' %}"></script>
-    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
-    <script src="{% static 'js/wow.min.js' %}"></script>
-    <script src="{% static 'js/nice-select.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
-    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/gijgo.min.js' %}"></script>
+<!-- JS here -->
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'js/ajax-form.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/gijgo.min.js' %}"></script>
 
-    <!--contact js-->
-    <script src="{% static 'js/contact.js' %}"></script>
-    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-    <script src="{% static 'js/jquery.form.js' %}"></script>
-    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
-    <script src="{% static 'js/mail-script.js' %}"></script>
+<!--contact js-->
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
 
-    <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
